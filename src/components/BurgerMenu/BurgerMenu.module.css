@@ -1,0 +1,12 @@
+.BurgerMenu{
+    font-size: 3.9rem;
+}
+.BurgerMenu:hover{
+    cursor: pointer;
+}
+
+@media  screen  and (min-width:64em){
+    .BurgerMenu{
+        display: none
+    }
+}

@@ -1,0 +1,1 @@
+export const DISPLAY_SIDE_NAV = 'DISPLAY_SIDE_NAV';

@@ -1,23 +1,45 @@
-import React from 'react';
-import NavItem from '../../components/NavItem';
-import Search from '../../components/SearchBar';
-import style from './Navbar.module.css'
-const navbar = (props)=>{
+import React,{Component} from 'react';
+import style from './Navbar.module.css';
+import * as action from '../../store/action/index';
+import {connect} from 'react-redux';
 
 
-    return (
-        <nav className = {style.Navbar}>
-        
-            <div className = "Logo">Logo</div>
-            
-            <Search/>
+import NavItems from '../../components/NavItems/NavItems';
+import Search from '../../components/SearchBar/SearchBar';
+import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
+import Backdrop from '../../components/Backdrop/Backdrop';
+import SideMenu from '../../components/SideMenu/SideMenu';
 
-            <NavItem link = "/">item- 1</NavItem>
-            <NavItem link = "/">item- 1</NavItem>
-            <NavItem link = "/">item- 1</NavItem>
-            <NavItem link = "/">item- 1</NavItem>
-        </nav>
-    )
 
+class Navbar extends Component{
+
+    render(){
+        return (
+            <nav className = {style.Navbar}>
+                <div className = "Logo">TusMoviesLibrary</div>    
+                <Search/>
+                <div className = {style.topItems}>
+                    <NavItems/>
+                </div>
+                <BurgerMenu clicked = {this.props.displaySideDrawer}/>
+                <Backdrop 
+                    show = {this.props.show} 
+                    clicked = {this.props.displaySideDrawer}/> 
+                <SideMenu 
+                    shows = {this.props.show} 
+                    clicked = {this.props.displaySideDrawer}/> 
+            </nav>
+        )
+    } 
+}  
+const mapStateToProps = state =>{  
+    return {
+        show : state.show
+    }  
 }
-export default navbar
+const mapDispatchToProps = dispatch =>{
+    return {
+        displaySideDrawer: ()=> dispatch(action.navegation())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
