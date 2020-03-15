@@ -1,0 +1,19 @@
+.Container {
+    margin-top: 12rem;
+    max-width: 154rem;
+    margin: 10rem auto;
+}
+.Movies{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-gap: 3rem;
+    
+}
+
+h1{
+    color: #fff;
+    font-size: 13rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: 'Aladin', cursive;
+}

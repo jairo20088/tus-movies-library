@@ -13,8 +13,8 @@ const sideMenu = props =>{
     }
     
     return (
-        <div className = {openOrClose.join(' ')} onClick = {props.clicked}>
-            <p className = {style.X} ><i className="fas fa-times"></i></p>
+        <div className = {openOrClose.join(' ')} >
+            <p className = {style.X} ><i  onClick = {props.clicked} className="fas fa-times"></i></p>
             <NavItems/>
         </div>
     )
