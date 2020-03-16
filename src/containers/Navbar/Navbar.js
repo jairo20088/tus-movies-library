@@ -23,10 +23,10 @@ class Navbar extends Component{
                 </div>
                 <BurgerMenu clicked = {this.props.displaySideDrawer}/>
                 <Backdrop 
-                    show = {this.props.show} 
+                    show = {this.props.showBackDrop} 
                     clicked = {this.props.displaySideDrawer}/> 
                 <SideMenu 
-                    shows = {this.props.show} 
+                    shows = {this.props.showNav} 
                     clicked = {this.props.displaySideDrawer}/> 
             </nav>
         )
@@ -34,7 +34,8 @@ class Navbar extends Component{
 }  
 const mapStateToProps = state =>{  
     return {
-        show : state.show
+        showNav : state.showNav,
+        showBackDrop: state.showBackDrop
     }  
 }
 const mapDispatchToProps = dispatch =>{

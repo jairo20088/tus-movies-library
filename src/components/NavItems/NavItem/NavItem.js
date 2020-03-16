@@ -6,9 +6,8 @@ const NavItem  = (props) =>{
 
     return(
            
-             <NavLink to = {props.link}>{props.children}</NavLink>
-       
-       
+         <NavLink to = {props.link}>{props.children}</NavLink>
+         
     )
 
 }
