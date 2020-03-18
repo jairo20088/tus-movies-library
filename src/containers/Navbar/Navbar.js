@@ -34,8 +34,8 @@ class Navbar extends Component{
 }  
 const mapStateToProps = state =>{  
     return {
-        showNav : state.showNav,
-        showBackDrop: state.showBackDrop
+        showNav : state.nav.showNav,
+        showBackDrop: state.nav.showBackDrop
     }  
 }
 const mapDispatchToProps = dispatch =>{

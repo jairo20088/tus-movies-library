@@ -4,8 +4,8 @@ const movie = props =>{
 
     return (
         <div className = {style.Movie}>
-            <img src = "https://image.tmdb.org/t/p/w300/zRBaZxS5YauLvRYjAdL4AUCwlht.jpg"/>
-            <h3>Pirates of the Caribbean: The Curse of the Black Pearl</h3>
+            <img src = {`https://image.tmdb.org/t/p/w500${props.image}`} alt = {props.alt}/>
+            
         </div>
     )
 }

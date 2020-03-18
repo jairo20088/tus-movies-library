@@ -1,14 +1,12 @@
 import * as actionTypes from '../action/actionTypes';
 
 const initialState = {
-    showNav: false,
-    showBackDrop: false,
-    description:false
+    movies:null,
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
-        case actionTypes.DISPLAY_SIDE_NAV:
-            return {...state,showNav:!state.showNav,showBackDrop:!state.showBackDrop}
+        case actionTypes.INITIAL_GET_MOVIES:
+            return {...state,movies:action.popularMovies}
         default:
             return state
     }

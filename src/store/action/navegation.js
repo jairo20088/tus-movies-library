@@ -5,8 +5,6 @@ export const displaySideDraw = ()=>{
         type:actionType.DISPLAY_SIDE_NAV
     }
 }
-
-
 export const navegation = ()=>{
     return dispatch => {
         dispatch(displaySideDraw())

@@ -6,7 +6,7 @@ const movieDescription = props =>{
     return(
         <div className= {style.MovieDescription}>
             <div>
-                <img src = 'https://image.tmdb.org/t/p/w300/zRBaZxS5YauLvRYjAdL4AUCwlht.jpg' className = {style.MovieImage}/>
+                <img src = 'https://image.tmdb.org/t/p/w300/zRBaZxS5YauLvRYjAdL4AUCwlht.jpg' className = {style.MovieImage} alt = ""/>
             </div>
             <div>
                 <h2>Pirates of the Caribbean: The Curse of the Black Pearl</h2>
