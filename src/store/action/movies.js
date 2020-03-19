@@ -13,13 +13,24 @@ export const movieDetails = (detail)=>{
         movieDetail:detail
     }
 }
-export const getPopularMovies = () =>{
+export const goToNextPage = ()=>{
+    return{
+        type:action.GO_NEXT_PAGE
+    }
+}
+export const goPrevPage = () =>{
+    return{
+        type:action.GO_PREV_PAGE
+    }
+}
+
+export const getPopularMovies = (page) =>{
 
     return dispatch =>{
-        axios.get(`/movie/popular?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=1`)
+        axios.get(`/movie/popular?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
         .then(res =>{
             dispatch(initialMovies(res.data.results))
-            console.log(res.data.results)
+            console.log(res.data)
         })
     }
 }

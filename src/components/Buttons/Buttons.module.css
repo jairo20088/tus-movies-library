@@ -1,0 +1,23 @@
+.Button{
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+}
+button{
+    display: block;
+    cursor: pointer;
+    margin-right: 8rem;
+    font-size: 3rem;
+    padding: 1rem 5rem;
+    background-color: #479107;
+    color: #fff;
+    border-radius: 3rem;
+    transition: all .2s;
+}
+button:hover{
+    background-color: #3a7505;
+}
+button:disabled{
+    background-color: rgb(129, 129, 129);
+    cursor: not-allowed;
+}

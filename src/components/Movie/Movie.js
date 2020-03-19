@@ -4,7 +4,7 @@ const movie = props =>{
 
     return (
         <div className = {style.Movie}>
-            <img src = {`https://image.tmdb.org/t/p/w500${props.image}`} alt = {props.alt}/>
+            <img src = {`https://image.tmdb.org/t/p/w300${props.image}`} alt = {props.alt}/>
             
         </div>
     )

@@ -1,2 +1,3 @@
 export {navegation} from './navegation';
-export {getPopularMovies} from './movies';
+
+export {getPopularMovies,goToNextPage,goPrevPage} from './movies';
