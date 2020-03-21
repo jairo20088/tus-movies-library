@@ -1,3 +1,9 @@
-export {navegation} from './navegation';
+export {displaySideDraw,hideBackdrop } from './navegation';
 
-export {getPopularMovies,goToNextPage,goPrevPage} from './movies';
+export {
+    getPopularMovies,
+    goToNextPage,
+    goPrevPage,
+    movieDetails,
+    hideBackDrop,
+    getMovieDetails} from './movies';

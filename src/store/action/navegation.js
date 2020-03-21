@@ -5,10 +5,9 @@ export const displaySideDraw = ()=>{
         type:actionType.DISPLAY_SIDE_NAV
     }
 }
-export const navegation = ()=>{
-    return dispatch => {
-        dispatch(displaySideDraw())
-        
-    }
 
+export const hideBackdrop = ()=>{
+    return{
+        type:actionType.HIDE_BACKDROP
+    }
 }

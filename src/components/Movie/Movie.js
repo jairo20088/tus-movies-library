@@ -3,9 +3,8 @@ import style from './Movie.module.css';
 const movie = props =>{
 
     return (
-        <div className = {style.Movie}>
+        <div className = {style.Movie} onClick = {props.clicked}>
             <img src = {`https://image.tmdb.org/t/p/w300${props.image}`} alt = {props.alt}/>
-            
         </div>
     )
 }

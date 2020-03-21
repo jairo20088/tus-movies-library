@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import Button from '../../components/Buttons/Buttons';
 import * as action from '../../store/action/index';
 import Spinner from '../../components/Spinner/Spinner';
+import BackDrop from '../../components/Backdrop/Backdrop';
+
 class Movies extends Component{
 
     componentDidMount(){
@@ -24,11 +26,13 @@ class Movies extends Component{
             return <Movie 
                         image = {el.poster_path} 
                         key = {el.id}
-                        alt = {el.overview}/>
+                        alt = {el.overview}
+                        clicked = {()=>this.props.onMovieDetailHandler(el.id)}/>
         })
         }else{
             movies = <Spinner/>
         }    
+
         return (
             <div className = {style.Container}>
                 <h1>Most Popular </h1>
@@ -40,8 +44,15 @@ class Movies extends Component{
                     next = {this.props.onNextPageHandler}
                     prev = {this.props.onPrevPageHanlder}/>
 
-                {this.props.showDescription ? <MovieDescription/>:null}
+                 {this.props.detail ? <MovieDescription 
+                    img = {this.props.movieDetail.poster_path}
+                    bg = {this.props.movieDetail.backdrop_path}
+                    title = {this.props.movieDetail.original_title}
+                    description = {this.props.movieDetail.overview}
+                    genres = {this.props.movieDetail.genres.map(el => el.name).join(', ')}
+                    vote = {this.props.movieDetail.vote_average}/>:null} 
 
+                <BackDrop show = {this.props.detail} clicked = {this.props.onHideBackdrooHandler}/>
             </div>
         )
     }
@@ -49,15 +60,18 @@ class Movies extends Component{
 const mapStateToProps = state =>{
     return{
         popularMovie: state.movie.movies,
-        showDescription:state.nav.description,
-        page: state.movie.page
+        page: state.movie.page,
+        detail: state.movie.detail,
+        movieDetail:state.movie.movieDetails
     }
 }
 const mapDispatchToProps = dispatch =>{
     return {
         onInitialMovies: (page)=>dispatch(action.getPopularMovies(page)),
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
-        onPrevPageHanlder: ()=> dispatch(action.goPrevPage())
+        onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
+        onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
+        onHideBackdrooHandler: ()=> dispatch(action.hideBackDrop())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Movies)

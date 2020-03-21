@@ -2,7 +2,9 @@ import * as actionTypes from '../action/actionTypes';
 
 const initialState = {
     movies:null,
-    page: 1
+    page: 1,
+    detail: false,
+    movieDetails:null
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
@@ -12,6 +14,11 @@ const reducer = (state = initialState,action)=>{
             return {...state,page:state.page +1}
         case actionTypes.GO_PREV_PAGE:
             return{...state,page:state.page -1}
+
+        case actionTypes.GET_MOVIE_DETAIL:
+            return {...state,detail:true,movieDetails:action.details}
+        case actionTypes.HIDE_BACKDROP:
+            return {...state,detail:false}
         default:
             return state
     }

@@ -22,9 +22,11 @@ class Navbar extends Component{
                     <NavItems/>
                 </div>
                 <BurgerMenu clicked = {this.props.displaySideDrawer}/>
+
                 <Backdrop 
-                    show = {this.props.showBackDrop} 
-                    clicked = {this.props.displaySideDrawer}/> 
+                    show = {this.props.showBackDrop}
+                    clicked = {this.props.hideBackdropHandler}/> 
+
                 <SideMenu 
                     shows = {this.props.showNav} 
                     clicked = {this.props.displaySideDrawer}/> 
@@ -35,12 +37,13 @@ class Navbar extends Component{
 const mapStateToProps = state =>{  
     return {
         showNav : state.nav.showNav,
-        showBackDrop: state.nav.showBackDrop
+        showBackDrop: state.nav.showBackDrop,
     }  
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        displaySideDrawer: ()=> dispatch(action.navegation())
+        displaySideDrawer: ()=> dispatch(action.displaySideDraw()),
+        hideBackdropHandler: ()=>dispatch(action.hideBackdrop())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Navbar)

@@ -7,12 +7,8 @@ export const initialMovies = (movies)=>{
         popularMovies:movies
     }
 }
-export const movieDetails = (detail)=>{
-    return{
-        type:action.GET_MOVIE_DETAIL,
-        movieDetail:detail
-    }
-}
+
+
 export const goToNextPage = ()=>{
     return{
         type:action.GO_NEXT_PAGE
@@ -21,6 +17,12 @@ export const goToNextPage = ()=>{
 export const goPrevPage = () =>{
     return{
         type:action.GO_PREV_PAGE
+    }
+}
+
+export const hideBackDrop = ()=>{
+    return{
+        type:action.HIDE_BACKDROP
     }
 }
 
@@ -35,6 +37,27 @@ export const getPopularMovies = (page) =>{
     }
 }
 
+
+
+export const movieDetails = (detail)=>{
+    return{
+        type:action.GET_MOVIE_DETAIL,
+        details:detail
+    }
+}
+
+export const getMovieDetails = (id)=>{
+
+    return dispatch =>{
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
+        .then(data =>{
+            dispatch(movieDetails(data.data))
+            console.log(data.data)
+        })
+
+    }
+
+}
 
 
 
