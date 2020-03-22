@@ -1,5 +1,5 @@
 import * as actionTypes from '../action/actionTypes';
-import { act } from 'react-dom/test-utils';
+
 
 const initialState = {
     showNav: false,

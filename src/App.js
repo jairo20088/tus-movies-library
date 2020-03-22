@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter,Route} from 'react-router-dom'
 import Navbar from './containers/Navbar/Navbar';
 import Movies from './containers/Movies/Movies';
 
@@ -8,7 +8,8 @@ function App() {
     <BrowserRouter>
       <div className="App">
           <Navbar/>
-          <Movies/>
+          <Route  exact path = "/:movies" component = {Movies}/>
+          
       </div>
     </BrowserRouter>
   );

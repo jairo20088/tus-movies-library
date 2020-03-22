@@ -6,9 +6,9 @@ const navItems  = props =>{
 
     return (
         <React.Fragment>
-            <NavItem link = '/' >Most popular</NavItem>
-            <NavItem link = '/' >Most rated</NavItem>
-            <NavItem link = '/' >More</NavItem>
+            <NavItem link = '/popular' >Most popular</NavItem>
+             <NavItem link = '/top_rated' >Most rated</NavItem>
+            <NavItem link = '/' >More</NavItem> 
         </React.Fragment>
     )
 

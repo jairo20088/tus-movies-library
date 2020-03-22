@@ -11,14 +11,19 @@ import BackDrop from '../../components/Backdrop/Backdrop';
 class Movies extends Component{
 
     componentDidMount(){
-        this.props.onInitialMovies(this.props.page)
+        this.props.onInitialMovies(this.props.page,this.props.match.params.movies)
+        console.log(this.props)
     }
     componentDidUpdate(prevProps){
+
         if(this.props.page !== prevProps.page){
-            this.props.onInitialMovies(this.props.page)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.movies)
+            // rerender when ulr change
+        } else if(this.props.match.params.movies !== prevProps.match.params.movies){ 
+            this.props.onResetPaginationHandler() // reset page when url change
+            this.props.onInitialMovies(this.props.page,this.props.match.params.movies)        
         }
     }
-
     render(){
         let movies;   
         if(this.props.popularMovie){
@@ -32,10 +37,9 @@ class Movies extends Component{
         }else{
             movies = <Spinner/>
         }    
-
         return (
             <div className = {style.Container}>
-                <h1>Most Popular </h1>
+                <h1>Most Popular Movies </h1>
                 <div className = {style.Movies}>
                       {movies}   
                 </div>
@@ -67,11 +71,12 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        onInitialMovies: (page)=>dispatch(action.getPopularMovies(page)),
+        onInitialMovies: (page,type)=>dispatch(action.getPopularMovies(page,type)),
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
-        onHideBackdrooHandler: ()=> dispatch(action.hideBackDrop())
+        onHideBackdrooHandler: ()=> dispatch(action.hideBackDrop()),
+        onResetPaginationHandler: ()=>dispatch(action.resetPagination())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Movies)

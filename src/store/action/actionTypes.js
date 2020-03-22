@@ -5,4 +5,6 @@ export const INITIAL_GET_MOVIES = 'INITIAL_GET_MOVIES';
 export const GET_MOVIE_DETAIL = 'GET_MOVIE_DETAIL';
 export const GO_NEXT_PAGE = 'GO_NEXT_PAGE';
 export const GO_PREV_PAGE = ' GO_PREV_PAGE';
+export const GET_RATED_MOVIE = 'GET_RATED_MOVIE';
+export const RESET_PAGINATION = 'RESET_PAGINATION'
 
