@@ -24,17 +24,12 @@ const movieDescription = props =>{
         animation-duration: .5s;
         animation-fill-mode: forwards;
         z-index: 1000;
-    
-    
 }
     @keyframes popup{
         0%{ transform: translate(-50%,-50%) scale(0)}
         100%{transform: translate(-50%,-50%) scale(1)}
-
-
     }  
-    
-    `
+`
 
     return(
         <NewStyle>
@@ -47,10 +42,8 @@ const movieDescription = props =>{
                 <p>Genres: {props.genres}</p>
                 <p>Vote Average: {props.vote}</p>
                 <a href = "https://www.youtube.com/watch?v=naQr0uTrH_s" target = "_blank"className = {style.Trailer}>Trailer</a>
-
-                
             </div>
-            </NewStyle>
+        </NewStyle>
     )
 }
 export default movieDescription

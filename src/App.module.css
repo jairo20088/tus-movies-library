@@ -1,0 +1,13 @@
+.App{
+    position:relative;
+    right: 0rem;
+    transition: all .5s;
+    overflow-x: hidden;
+}
+.OpenMenu{
+    position:relative;
+    right: 25rem;
+    transition: all .5s;
+}
+
+

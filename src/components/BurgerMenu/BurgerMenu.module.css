@@ -5,8 +5,8 @@
     cursor: pointer;
 }
 
-@media  screen  and (min-width:64em){
+/* @media  screen  and (min-width:64em){
     .BurgerMenu{
         display: none
     }
-}
+} */

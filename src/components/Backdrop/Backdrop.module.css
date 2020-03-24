@@ -3,12 +3,15 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.534);
     position: fixed;
+    opacity: 0;
     top: 0;
     left: 0;
-    z-index: 100;
-    display: none;
+    z-index: 200;
+    visibility: hidden;
+    transition: all .5s;
 }
 
 .Display {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }

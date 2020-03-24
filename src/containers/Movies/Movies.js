@@ -6,13 +6,12 @@ import {connect} from 'react-redux';
 import Button from '../../components/Buttons/Buttons';
 import * as action from '../../store/action/index';
 import Spinner from '../../components/Spinner/Spinner';
-import BackDrop from '../../components/Backdrop/Backdrop';
 
 class Movies extends Component{
 
     componentDidMount(){
         this.props.onInitialMovies(this.props.page,this.props.match.params.movies)
-        console.log(this.props)
+        //console.log(this.props)
     }
     componentDidUpdate(prevProps){
 
@@ -37,9 +36,17 @@ class Movies extends Component{
         }else{
             movies = <Spinner/>
         }    
+        let title; 
+        if(this.props.match.params.movies.includes('_')){
+            title =this.props.match.params.movies.match(/_(.*)/)[1].toUpperCase();
+        } else {
+            title = this.props.match.params.movies.toUpperCase()
+        }
+       console.log(title)
+
         return (
             <div className = {style.Container}>
-                <h1>Most Popular Movies </h1>
+                <h1>{title} MOVIES </h1>
                 <div className = {style.Movies}>
                       {movies}   
                 </div>
@@ -51,12 +58,11 @@ class Movies extends Component{
                  {this.props.detail ? <MovieDescription 
                     img = {this.props.movieDetail.poster_path}
                     bg = {this.props.movieDetail.backdrop_path}
-                    title = {this.props.movieDetail.original_title}
+                    title = {this.props.movieDetail.title}
                     description = {this.props.movieDetail.overview}
                     genres = {this.props.movieDetail.genres.map(el => el.name).join(', ')}
                     vote = {this.props.movieDetail.vote_average}/>:null} 
 
-                <BackDrop show = {this.props.detail} clicked = {this.props.onHideBackdrooHandler}/>
             </div>
         )
     }

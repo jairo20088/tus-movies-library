@@ -1,6 +1,6 @@
 .Navbar{
     display: flex;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     left: 0;
@@ -9,13 +9,15 @@
     padding: 2rem 3rem;
     background-color: #479107;
     color: #fff;
+    z-index:0;
+    
     
 }
-@media only screen and (max-width:64em){
+/* @media only screen and (max-width:64em){
     .topItems{
         display: none;
     }
-}
+} */
 
 
 

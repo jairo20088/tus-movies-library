@@ -1,4 +1,13 @@
-
+.Trailer{
+    margin-top: 3rem;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 3rem;
+    text-transform: uppercase;
+    padding: 1.7rem 6rem;
+    background-color: #479107;
+    color: #fff;
+}
 h2{
     font-size: 4.5rem;
     margin-bottom: 2rem;
@@ -18,12 +27,4 @@ p:nth-child(4){
 .MovieImage{
     display: block;
     width: 100%;
-}
-.Trailer{
-    margin-top: 3rem;
-    display: inline-block;
-    font-size: 3rem;
-    text-transform: uppercase;
-    padding: 1.7rem 6rem;
-    background-color: #479107;
 }

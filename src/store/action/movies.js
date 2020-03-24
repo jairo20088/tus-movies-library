@@ -29,12 +29,12 @@ export const resetPagination = ()=>{
 }
 
 export const getPopularMovies = (page,movieType) =>{
-    console.log(movieType)
+    //console.log(movieType)
     return dispatch =>{
         axios.get(`/movie/${movieType}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
         .then(res =>{
             dispatch(initialMovies(res.data.results))
-            console.log(res.data)
+            //console.log(res.data)
         })
     }
 }

@@ -4,7 +4,7 @@ const initialState = {
     movies:null,
     page: 1,
     detail: false,
-    movieDetails:null
+    movieDetails:null,
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
@@ -15,7 +15,7 @@ const reducer = (state = initialState,action)=>{
         case actionTypes.GO_PREV_PAGE:
             return{...state,page:state.page -1}
         case actionTypes.GET_MOVIE_DETAIL:
-            return {...state,detail:true,movieDetails:action.details}
+            return {...state,detail:true,movieDetails:action.details,showBackDrop:true}
         case actionTypes.RESET_PAGINATION:
             return {...state,page:1}
         case actionTypes.HIDE_BACKDROP:

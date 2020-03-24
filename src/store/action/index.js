@@ -1,4 +1,6 @@
-export {displaySideDraw,hideBackdrop } from './navegation';
+export {displaySideDraw,
+        hideBackdrop } from './navegation';
+
 export {
     getPopularMovies,
     goToNextPage,
