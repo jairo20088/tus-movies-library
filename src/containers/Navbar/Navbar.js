@@ -10,11 +10,17 @@ import Backdrop from '../../components/Backdrop/Backdrop';
 
 class Navbar extends Component{
 
+    
+
     render(){
         return (
             <nav className = {style.Navbar}>
                 <div className = "Logo">TusMoviesLibrary</div>    
-                <Search/>
+                <Search 
+                    changed = {(e)=>this.props.onGetUserInputHandler(e.target.value)}
+                    value = {this.props.userInput}
+                    clicked = {()=>this.props.onSearchForMovieHandler(this.props.userInput)}/>
+
                 <BurgerMenu clicked = {this.props.showMenu}/>
                 <SideMenu clicked = {this.props.close}/>
                 <Backdrop show = {this.props.backdrop}/>
@@ -22,10 +28,16 @@ class Navbar extends Component{
         )
     } 
 }  
-
-const mapDispatchToProps = dispatch =>{
+const mapStateToProps = state =>{
     return {
-        displaySideDrawer: ()=> dispatch(action.displaySideDraw())
+        userInput :state.movie.userInput
     }
 }
-export default connect(null,mapDispatchToProps)(Navbar)
+const mapDispatchToProps = dispatch =>{
+    return {
+        displaySideDrawer: ()=> dispatch(action.displaySideDraw()),
+        onGetUserInputHandler: (text) => dispatch(action.getUserInput(text)),
+        onSearchForMovieHandler:(input)=>dispatch(action.searchForMovie(input))
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)

@@ -8,4 +8,6 @@ export {
     movieDetails,
     hideBackDrop,
     getMovieDetails,
-    resetPagination} from './movies';
+    resetPagination,
+    getUserInput,
+    searchForMovie} from './movies';

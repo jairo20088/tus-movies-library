@@ -55,3 +55,20 @@ export const getMovieDetails = (id)=>{
     }
 }
 
+export const getUserInput = (text)=>{
+    return {
+        type:action.GET_USER_INPUT,
+        userInput : text
+    }
+}
+
+export const searchForMovie = (input)=>{
+    return dispatch =>{
+    axios.get(`https://api.themoviedb.org/3/search/company?api_key=${process.env.REACT_APP_MY_KEY}&query=${input}&page=1`)
+    .then(data =>{
+        //dispatch(getUserInput(data.data))
+        console.log(data.data)
+    })
+}
+}
+

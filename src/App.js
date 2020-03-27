@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter,Route} from 'react-router-dom'
+import {BrowserRouter,Route,Redirect} from 'react-router-dom'
 import Navbar from './containers/Navbar/Navbar';
 import Movies from './containers/Movies/Movies';
 import {connect} from 'react-redux';
@@ -30,6 +30,7 @@ class App extends Component{
                   backdrop = {this.props.openMenu}
                   close = {this.props.displaySideDrawer}/>
           <Route  exact path = "/:movies" component = {Movies}/>
+          <Redirect to ="/popular" from = {"/"}/>
         </div>
       </BrowserRouter>
       

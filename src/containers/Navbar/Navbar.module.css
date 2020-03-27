@@ -1,16 +1,19 @@
 .Navbar{
-    display: flex;
+    /* display: flex; */
     position: sticky;
     width: 100%;
     top: 0;
     left: 0;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
     font-size: 2.5rem;
     padding: 2rem 3rem;
     background-color: #479107;
     color: #fff;
     z-index:0;
-    
+     display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center; 
     
 }
 /* @media only screen and (max-width:64em){

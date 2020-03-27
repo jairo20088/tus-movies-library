@@ -5,6 +5,7 @@ const initialState = {
     page: 1,
     detail: false,
     movieDetails:null,
+    userInput: ''
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
@@ -20,6 +21,8 @@ const reducer = (state = initialState,action)=>{
             return {...state,page:1}
         case actionTypes.HIDE_BACKDROP:
             return {...state,detail:false}
+        case actionTypes.GET_USER_INPUT:
+            return {...state,userInput:action.userInput}
         default:
             return state
     }

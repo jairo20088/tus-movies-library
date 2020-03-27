@@ -42,7 +42,7 @@ class Movies extends Component{
         } else {
             title = this.props.match.params.movies.toUpperCase()
         }
-       console.log(title)
+       
 
         return (
             <div className = {style.Container}>
@@ -72,7 +72,7 @@ const mapStateToProps = state =>{
         popularMovie: state.movie.movies,
         page: state.movie.page,
         detail: state.movie.detail,
-        movieDetail:state.movie.movieDetails
+        movieDetail:state.movie.movieDetails,
     }
 }
 const mapDispatchToProps = dispatch =>{
@@ -81,7 +81,6 @@ const mapDispatchToProps = dispatch =>{
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
-        onHideBackdrooHandler: ()=> dispatch(action.hideBackDrop()),
         onResetPaginationHandler: ()=>dispatch(action.resetPagination())
     }
 }
