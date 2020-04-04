@@ -9,5 +9,6 @@ export const RESET_PAGINATION = 'RESET_PAGINATION';
 
 export const SEARCH_FOR_MOVIE = 'SEARCH_FOR_MOVIE';
 export const GET_USER_INPUT = 'GET_USER_INPUT';
+export const MOVIE_SEARCH = 'MOVIE_SEARCH';
 
 

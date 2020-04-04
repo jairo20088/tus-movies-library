@@ -10,18 +10,20 @@ import Spinner from '../../components/Spinner/Spinner';
 class Movies extends Component{
 
     componentDidMount(){
-        this.props.onInitialMovies(this.props.page,this.props.match.params.movies)
-        //console.log(this.props)
+        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
     }
     componentDidUpdate(prevProps){
-
+    
         if(this.props.page !== prevProps.page){
-            this.props.onInitialMovies(this.props.page,this.props.match.params.movies)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
             // rerender when ulr change
-        } else if(this.props.match.params.movies !== prevProps.match.params.movies){ 
-            this.props.onResetPaginationHandler() // reset page when url change
-            this.props.onInitialMovies(this.props.page,this.props.match.params.movies)        
+        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
+            this.props.onResetPaginationHandler() 
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
+            console.log(this.props)
+            
         }
+        
     }
     render(){
         let movies;   
@@ -37,16 +39,14 @@ class Movies extends Component{
             movies = <Spinner/>
         }    
         let title; 
-        if(this.props.match.params.movies.includes('_')){
-            title =this.props.match.params.movies.match(/_(.*)/)[1].toUpperCase();
+        if(this.props.match.params.moviesType.includes('_')){
+            title =this.props.match.params.moviesType.match(/_(.*)/)[1].toUpperCase();
         } else {
-            title = this.props.match.params.movies.toUpperCase()
+            title = this.props.match.params.moviesType.toUpperCase()
         }
-       
-
         return (
             <div className = {style.Container}>
-                <h1>{title} MOVIES </h1>
+                <h1>{title}</h1>
                 <div className = {style.Movies}>
                       {movies}   
                 </div>
@@ -62,7 +62,6 @@ class Movies extends Component{
                     description = {this.props.movieDetail.overview}
                     genres = {this.props.movieDetail.genres.map(el => el.name).join(', ')}
                     vote = {this.props.movieDetail.vote_average}/>:null} 
-
             </div>
         )
     }
@@ -73,11 +72,12 @@ const mapStateToProps = state =>{
         page: state.movie.page,
         detail: state.movie.detail,
         movieDetail:state.movie.movieDetails,
+        userInput :state.movie.userInput
     }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        onInitialMovies: (page,type)=>dispatch(action.getPopularMovies(page,type)),
+        onInitialMovies: (page,type,search)=>dispatch(action.getPopularMovies(page,type,search)),
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),

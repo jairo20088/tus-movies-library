@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import {BrowserRouter,Route,Redirect} from 'react-router-dom'
+import {BrowserRouter,Route,Redirect,Switch} from 'react-router-dom'
 import Navbar from './containers/Navbar/Navbar';
 import Movies from './containers/Movies/Movies';
 import {connect} from 'react-redux';
 import Backdrop from './components/Backdrop/Backdrop';
 import * as action from './store/action/index';
 import style from './App.module.css';
-
-
 
 class App extends Component{
   
@@ -29,8 +27,10 @@ class App extends Component{
           <Navbar showMenu = {this.props.displaySideDrawer}
                   backdrop = {this.props.openMenu}
                   close = {this.props.displaySideDrawer}/>
-          <Route  exact path = "/:movies" component = {Movies}/>
-          <Redirect to ="/popular" from = {"/"}/>
+          <Switch>
+            <Route  exact path = "/:moviesType" component = {Movies}/> 
+          </Switch>
+         
         </div>
       </BrowserRouter>
       

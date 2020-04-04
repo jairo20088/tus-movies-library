@@ -8,7 +8,7 @@ const navItems  = props =>{
             <NavItem link = '/popular' >Most popular</NavItem>
              <NavItem link = '/top_rated' >Most rated</NavItem>
              <NavItem link = '/upcoming' >Upcoming</NavItem>
-            <NavItem link = '/' >More</NavItem> 
+            {/* <NavItem link = '/' >More</NavItem>  */}
         </React.Fragment>
     )
 }
