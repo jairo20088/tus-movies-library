@@ -7,20 +7,22 @@ import Button from '../../components/Buttons/Buttons';
 import * as action from '../../store/action/index';
 import Spinner from '../../components/Spinner/Spinner';
 
+
 class Movies extends Component{
 
     componentDidMount(){
-        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
+        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
+        
     }
     componentDidUpdate(prevProps){
     
         if(this.props.page !== prevProps.page){
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
             // rerender when ulr change
         } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
             this.props.onResetPaginationHandler() 
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.userInput)
-            console.log(this.props)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
+            //console.log(this.props)
             
         }
         

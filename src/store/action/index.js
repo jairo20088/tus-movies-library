@@ -10,4 +10,5 @@ export {
     getMovieDetails,
     resetPagination,
     getUserInput,
-    searchMovie} from './movies';
+    searchMovie,
+    getListGenre} from './movies';

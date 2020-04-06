@@ -5,7 +5,8 @@ const initialState = {
     page: 1,
     detail: false,
     movieDetails:null,
-    userInput: ''
+    userInput: '',
+    genre:null
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
@@ -23,6 +24,8 @@ const reducer = (state = initialState,action)=>{
             return {...state,detail:false}
         case actionTypes.GET_USER_INPUT:
             return {...state,userInput:action.userInput}
+        case actionTypes.GET_GENRE_LIST:
+            return {...state,genre:action.genreList}
         default:
             return state
     }

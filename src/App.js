@@ -29,6 +29,7 @@ class App extends Component{
                   close = {this.props.displaySideDrawer}/>
           <Switch>
             <Route  exact path = "/:moviesType" component = {Movies}/> 
+            <Redirect to ="/popular" from ='/'/>
           </Switch>
          
         </div>

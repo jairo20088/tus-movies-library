@@ -52,20 +52,17 @@ export const getPopularMovies = (page,movieType,userInput) =>{
             axios.get(`/movie/${movieType}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
             .then(res =>{
             dispatch(initialMovies(res.data.results))
-                //console.log(res)
+               // console.log(res.data)
             })
-        } else {
+        } else if (userInput !== ''){
             axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${userInput}&page=${page}&include_adult=false`)
             .then(res =>{
-               // console.log(res.data)
+                //console.log(res.data)
                 dispatch(initialMovies(res.data.results))
-        })
-
+            })
         }
-       
     }
 }
-
 
 export const movieDetails = (detail)=>{
     return{
@@ -76,22 +73,44 @@ export const movieDetails = (detail)=>{
 export const getMovieDetails = (id)=>{
     return dispatch =>{  
     
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
+        axios.get(`/movie/${id}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
         .then(data =>{
             dispatch(movieDetails(data.data))
             //console.log(data.data)
         })
     }
 }
-export const searchMovie = (input)=>{
+export const searchMovie = (page,input)=>{
     return dispatch =>{
-        axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${input}&page=1&include_adult=false`)
+        
+        if(input !==''){
+            axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${input}&page=${page}&include_adult=false`)
             .then(res =>{
-               // console.log(res.data)
+               //console.log(res.data)
                 dispatch(initialMovies(res.data.results))
+        })
+        }
+        
+    }
+}
+
+export const genreList = data=>{
+    return {
+        type:action.GET_GENRE_LIST,
+        genreList :data
+    }
+}
+export const getListGenre = () =>{
+    return dispatch =>{
+        axios.get(`/genre/movie/list?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
+        .then(res =>{
+            dispatch(genreList(res.data.genres))
+            console.log(res.data.genres)
         })
     }
 }
+
+
 
 
 

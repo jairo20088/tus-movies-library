@@ -9,7 +9,7 @@ const sideMenu = props =>{
     return (
         <div className = {style.SideMenu} >
             <p className = {style.X} ><i  onClick = {props.clicked} className="fas fa-times"></i></p>
-            <NavItems/>
+            <NavItems genre = {props.genre}/>
         </div>
     )
 

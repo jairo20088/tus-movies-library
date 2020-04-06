@@ -1,12 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 const NavItem  = (props) =>{
 
     return(
            
-         <NavLink to = {props.link}>{props.children}</NavLink>
+         <Link to = {props.link}>{props.children}</Link>
          
     )
 
