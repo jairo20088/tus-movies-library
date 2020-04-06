@@ -11,17 +11,18 @@ import Spinner from '../../components/Spinner/Spinner';
 class Movies extends Component{
 
     componentDidMount(){
-        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
+        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
         
     }
     componentDidUpdate(prevProps){
     
         if(this.props.page !== prevProps.page){
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
+            console.log(this.props.IdElement)
             // rerender when ulr change
         } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
             this.props.onResetPaginationHandler() 
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType)
+            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
             //console.log(this.props)
             
         }
@@ -74,12 +75,14 @@ const mapStateToProps = state =>{
         page: state.movie.page,
         detail: state.movie.detail,
         movieDetail:state.movie.movieDetails,
-        userInput :state.movie.userInput
+        userInput :state.movie.userInput,
+        genre:state.movie.genre,
+        linkId:state.movie.IdElement
     }
 }
 const mapDispatchToProps = dispatch =>{
     return {
-        onInitialMovies: (page,type,search)=>dispatch(action.getPopularMovies(page,type,search)),
+        onInitialMovies: (page,type,search,id)=>dispatch(action.getPopularMovies(page,type,search,id)),
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),

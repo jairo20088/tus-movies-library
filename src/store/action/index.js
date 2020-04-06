@@ -1,5 +1,5 @@
 export {displaySideDraw,
-        hideBackdrop } from './navegation';
+        hideBackdrop} from './navegation';
 
 export {
     getPopularMovies,
@@ -11,4 +11,5 @@ export {
     resetPagination,
     getUserInput,
     searchMovie,
-    getListGenre} from './movies';
+    getListGenre,
+    getMoviesLink} from './movies';

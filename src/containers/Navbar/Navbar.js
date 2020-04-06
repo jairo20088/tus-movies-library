@@ -29,7 +29,10 @@ class Navbar extends Component{
                         
                     }}/>
                 <BurgerMenu clicked = {this.props.showMenu}/>
-                <SideMenu  clicked = {this.props.close} genre = {this.props.genre?this.props.genre:[{name:'jose'},{name:'hola'}]}/>
+                <SideMenu  
+                        clicked = {this.props.close} 
+                        genre = {this.props.genre?this.props.genre:[{name:'jose'},{name:'hola'}]}
+                       />
                 <Backdrop show = {this.props.backdrop}/>
             </nav>
         )

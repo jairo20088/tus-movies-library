@@ -6,7 +6,8 @@ const initialState = {
     detail: false,
     movieDetails:null,
     userInput: '',
-    genre:null
+    genre:null,
+    IdElement:null
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
@@ -26,6 +27,8 @@ const reducer = (state = initialState,action)=>{
             return {...state,userInput:action.userInput}
         case actionTypes.GET_GENRE_LIST:
             return {...state,genre:action.genreList}
+        case actionTypes.GET_LINK:
+            return {...state,IdElement:action.linkId}
         default:
             return state
     }

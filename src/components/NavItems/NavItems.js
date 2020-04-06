@@ -1,11 +1,16 @@
 import React from 'react';
 import NavItem from './NavItem/NavItem';
+import {connect} from 'react-redux';
+import * as action from '../../store/action/index'
 import  './NavItems.module.css';
 
 const navItems  = props =>{
     const genreList = props.genre.map((el,index) =>{
         return (
-            <NavItem key={index} link = {`/${el.name}`}>{el.name}</NavItem>
+            <NavItem 
+                clicked = {()=>props.onClickedLink(el.id,props.page)}
+                key={index} 
+                link = {`/${el.name}`}>{el.name}</NavItem>
         )
 
     })
@@ -19,4 +24,17 @@ const navItems  = props =>{
         </React.Fragment>
     )
 }
-export default navItems
+const mapStateToProps = state =>{
+    return {
+        page: state.movie.page,
+    }
+}
+
+const mapDispatchToProps  = dispatch =>{
+    return{
+        onClickedLink : (id,page)=>dispatch(action.getMoviesLink(id,page))
+    }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(navItems)

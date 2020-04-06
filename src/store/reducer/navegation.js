@@ -3,7 +3,8 @@ import * as actionTypes from '../action/actionTypes';
 
 const initialState = {
     showNav: false,
-    showBackDrop: false
+    showBackDrop: false,
+    IdElement:null
 }
 const reducer = (state = initialState,action)=>{
     switch(action.type){
