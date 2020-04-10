@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import style from './Movies.module.css';
 import Movie from '../../components/Movie/Movie';
-import MovieDescription  from '../../components/MovieDescription/MovieDescription';
 import {connect} from 'react-redux';
 import Button from '../../components/Buttons/Buttons';
 import * as action from '../../store/action/index';
@@ -10,71 +9,67 @@ import Spinner from '../../components/Spinner/Spinner';
 
 class Movies extends Component{
 
+
     componentDidMount(){
-        this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
-        
+        const page = this.props.page
+        const movieType = this.props.match.params.moviesType
+        this.props.onInitialMovies(page,movieType)
     }
+
     componentDidUpdate(prevProps){
+        const page = this.props.page
+        const movieType = this.props.match.params.moviesType
     
-        if(this.props.page !== prevProps.page){
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
-            console.log(this.props.IdElement)
-            // rerender when ulr change
+        //render when page change
+        if(page !== prevProps.page){
+            this.props.onInitialMovies(page,movieType)
+            this.props.onSearchMovie(page,this.props.userInput)
+        // rerender when ulr change
         } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
             this.props.onResetPaginationHandler() 
-            this.props.onInitialMovies(this.props.page,this.props.match.params.moviesType,this.props.match.params.moviesType,this.props.linkId)
-            //console.log(this.props)
-            
+            this.props.onInitialMovies(page,movieType)   
         }
-        
     }
+
     render(){
         let movies;   
-        if(this.props.popularMovie){
-            movies = this.props.popularMovie.map(el =>{
+        let title; 
+        if(this.props.movies){
+            movies = this.props.movies.map(el =>{
             return <Movie 
                         image = {el.poster_path} 
-                        key = {el.id}
+                         key = {el.id}
                         alt = {el.overview}
                         clicked = {()=>this.props.onMovieDetailHandler(el.id)}/>
-        })
+            })
         }else{
             movies = <Spinner/>
-        }    
-        let title; 
+        }   
+
         if(this.props.match.params.moviesType.includes('_')){
             title =this.props.match.params.moviesType.match(/_(.*)/)[1].toUpperCase();
         } else {
             title = this.props.match.params.moviesType.toUpperCase()
         }
+
         return (
             <div className = {style.Container}>
-                <h1>{title}</h1>
+                <h1>{title} MOVIES</h1>
                 <div className = {style.Movies}>
                       {movies}   
                 </div>
-                <Button 
+                {this.props.movies ?<Button 
                     show = {this.props.page > 1 ? false:true } 
                     next = {this.props.onNextPageHandler}
-                    prev = {this.props.onPrevPageHanlder}/>
-
-                 {this.props.detail ? <MovieDescription 
-                    img = {this.props.movieDetail.poster_path}
-                    bg = {this.props.movieDetail.backdrop_path}
-                    title = {this.props.movieDetail.title}
-                    description = {this.props.movieDetail.overview}
-                    genres = {this.props.movieDetail.genres.map(el => el.name).join(', ')}
-                    vote = {this.props.movieDetail.vote_average}/>:null} 
+                    prev = {this.props.onPrevPageHanlder}/>:null}
             </div>
         )
     }
 } 
 const mapStateToProps = state =>{
     return{
-        popularMovie: state.movie.movies,
+        movies: state.movie.movies,
         page: state.movie.page,
-        detail: state.movie.detail,
-        movieDetail:state.movie.movieDetails,
         userInput :state.movie.userInput,
         genre:state.movie.genre,
         linkId:state.movie.IdElement
@@ -86,7 +81,8 @@ const mapDispatchToProps = dispatch =>{
         onNextPageHandler: ()=> dispatch(action.goToNextPage()),
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
-        onResetPaginationHandler: ()=>dispatch(action.resetPagination())
+        onResetPaginationHandler: ()=>dispatch(action.resetPagination()),
+        onSearchMovie:(page,input) => dispatch(action.searchMovie(page,input))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Movies)

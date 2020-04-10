@@ -1,6 +1,6 @@
 .Container {
     max-width: 154rem;
-    margin:  5rem auto;
+    margin:  7rem auto;
 }
 .Movies{
     display: grid;
@@ -8,9 +8,9 @@
     grid-gap: 3rem;
 }
 h1{
-    color: #000;
-    font-size: 10rem;
+    color: #fff;
+    font-size: 8rem;
     text-align: center;
-    margin-bottom: 3rem;
-    font-family: 'Aladin', cursive;
+    margin-bottom: 7rem;
+    font-family: 'Comic Neue', cursive;
 }

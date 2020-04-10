@@ -8,7 +8,7 @@ const navItems  = props =>{
     const genreList = props.genre.map((el,index) =>{
         return (
             <NavItem 
-                clicked = {()=>props.onClickedLink(el.id,props.page)}
+                clicked = {()=>{}/* props.onClickedLink(el.id,props.page) */}
                 key={index} 
                 link = {`/${el.name}`}>{el.name}</NavItem>
         )
@@ -32,7 +32,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps  = dispatch =>{
     return{
-        onClickedLink : (id,page)=>dispatch(action.getMoviesLink(id,page))
+        /* onClickedLink : (id,page)=>dispatch(action.getMoviesLink(id,page)) */
     }
 }
 

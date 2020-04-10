@@ -1,12 +1,12 @@
 .App{
     position:relative;
     right: 0rem;
-    transition: all .5s;
     overflow-x: hidden;
+    transition: all .5s;
 }
 .OpenMenu{
     position:relative;
-    right: 25rem;
+    right: 42rem;
     transition: all .5s;
 }
 

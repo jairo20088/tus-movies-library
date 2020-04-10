@@ -10,9 +10,9 @@ import {withRouter} from 'react-router'
 
 class Navbar extends Component{
 
-    componentDidMount(){
+    /* componentDidMount(){
         this.props.onGetListGenre();
-    }
+    } */
 
 
     render(){
@@ -50,8 +50,8 @@ const mapDispatchToProps = dispatch =>{
     return {
         displaySideDrawer: ()=> dispatch(action.displaySideDraw()),
         onGetUserInputHandler: (text) => dispatch(action.getUserInput(text)),
-        onSearchMovie: (page,input)=>dispatch(action.searchMovie(page,input)),
-        onGetListGenre: ()=>dispatch(action.getListGenre())
+        onSearchMovie: (page,input)=>dispatch(action.searchMovie(page,input))
+       /*  onGetListGenre: ()=>dispatch(action.getListGenre()) */
     }
 }
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Navbar))

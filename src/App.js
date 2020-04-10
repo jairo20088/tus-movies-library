@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Backdrop from './components/Backdrop/Backdrop';
 import * as action from './store/action/index';
 import style from './App.module.css';
+import Description from './containers/Description/Description';
 
 class App extends Component{
   
@@ -27,6 +28,8 @@ class App extends Component{
           <Navbar showMenu = {this.props.displaySideDrawer}
                   backdrop = {this.props.openMenu}
                   close = {this.props.displaySideDrawer}/>
+          <Description/>
+          
           <Switch>
             <Route  exact path = "/:moviesType" component = {Movies}/> 
             <Redirect to ="/popular" from ='/'/>
