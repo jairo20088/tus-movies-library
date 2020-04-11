@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const NavItem  = (props) =>{
 
     return(
-        <Link onClick = {props.clicked} to = {props.link}>{props.children}</Link>
+        <Link onClick = {props.urlClicked} to = {props.link}>{props.children}</Link>
          
     )
 

@@ -10,9 +10,9 @@ import {withRouter} from 'react-router'
 
 class Navbar extends Component{
 
-    /* componentDidMount(){
-        this.props.onGetListGenre();
-    } */
+     componentDidMount(){
+        this.props.onGetMovieGenreList();
+    } 
 
 
     render(){
@@ -31,7 +31,7 @@ class Navbar extends Component{
                 <BurgerMenu clicked = {this.props.showMenu}/>
                 <SideMenu  
                         clicked = {this.props.close} 
-                        genre = {this.props.genre?this.props.genre:[{name:'jose'},{name:'hola'}]}
+                        genre = {this.props.genre?this.props.genre:[{name:'josesdfsdf'},{name:'hola'},{name:'jose'},{name:'hola'},{name:'jose'},{name:'hola'},{name:'jose'},{name:'hola'},{name:'jose'},{name:'hola'}]}
                        />
                 <Backdrop show = {this.props.backdrop}/>
             </nav>
@@ -50,8 +50,9 @@ const mapDispatchToProps = dispatch =>{
     return {
         displaySideDrawer: ()=> dispatch(action.displaySideDraw()),
         onGetUserInputHandler: (text) => dispatch(action.getUserInput(text)),
-        onSearchMovie: (page,input)=>dispatch(action.searchMovie(page,input))
-       /*  onGetListGenre: ()=>dispatch(action.getListGenre()) */
+        onSearchMovie: (page,input)=>dispatch(action.searchMovie(page,input)),
+        onGetMovieGenreList: ()=> dispatch(action.getListGenre())
+       
     }
 }
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Navbar))

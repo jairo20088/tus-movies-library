@@ -10,9 +10,7 @@ const sideMenu = props =>{
         <div className = {style.SideMenu} >
             <p className = {style.X} ><i  onClick = {props.clicked} className="fas fa-times"></i></p>
             <NavItems 
-                genre = {props.genre} 
-                clicked  = {props.genreClick}
-                urlClick = {(e,index)=> console.log(index)}/>
+                genre = {props.genre}/>
         </div>
     )
 

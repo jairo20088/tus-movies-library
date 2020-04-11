@@ -1,6 +1,22 @@
 a:link,
 a:visited{
-    text-decoration: none;
-    
+    text-decoration: none; 
+}
+.LinkContainer{
+    background-color: #517f74;
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem;
+}
+.LinkContainer a {
+    display: inline-block;
+    padding: 1rem;
+    color: #fff;
+    margin-right: 1.5rem;
+    font-size: 2.3rem;
+}
+.LinkContainer a:hover{
+    background-color: #fff;
+    color: #395851;
 }
 

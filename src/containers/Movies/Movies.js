@@ -23,11 +23,14 @@ class Movies extends Component{
         //render when page change
         if(page !== prevProps.page){
             this.props.onInitialMovies(page,movieType)
+            //this.props.onGetMovieByGenreHandler(page,this.props.linkId)
             this.props.onSearchMovie(page,this.props.userInput)
+
         // rerender when ulr change
         } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
             this.props.onResetPaginationHandler() 
-            this.props.onInitialMovies(page,movieType)   
+            this.props.onInitialMovies(page,movieType) 
+            //this.props.onGetMovieByGenreHandler(page,this.props.linkId)  
         }
     }
 
@@ -82,7 +85,8 @@ const mapDispatchToProps = dispatch =>{
         onPrevPageHanlder: ()=> dispatch(action.goPrevPage()),
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
         onResetPaginationHandler: ()=>dispatch(action.resetPagination()),
-        onSearchMovie:(page,input) => dispatch(action.searchMovie(page,input))
+        onSearchMovie:(page,input) => dispatch(action.searchMovie(page,input)),
+        onGetMovieByGenreHandler: (page,id)=> dispatch(action.getMoviesLink(page,id))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Movies)

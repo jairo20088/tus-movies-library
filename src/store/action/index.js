@@ -1,13 +1,14 @@
 export {displaySideDraw,
         hideBackdrop,
         searchMovie,
-        getUserInput} from './navegation';
+        getUserInput,
+        getListGenre,
+        getMoviesLink } from './navegation';
 
 export {
     getPopularMovies,
     movieDetails,
     getMovieDetails,
-    getListGenre,
     /* getMoviesLink */} from './movies';
 
 export {
