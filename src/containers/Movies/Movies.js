@@ -19,18 +19,26 @@ class Movies extends Component{
     componentDidUpdate(prevProps){
         const page = this.props.page
         const movieType = this.props.match.params.moviesType
-    
+        const linkId = this.props.linkId
+        const userInput = this.props.userInput;
         //render when page change
         if(page !== prevProps.page){
+            if(this.props.match.url === '/search'){
+                this.props.onSearchMovie(page,userInput) 
+            } else if (this.props.match.url === '/genre'){
+                this.props.onGetMovieByGenreHandler(page,linkId)
+            }   
             this.props.onInitialMovies(page,movieType)
-            //this.props.onGetMovieByGenreHandler(page,this.props.linkId)
-            this.props.onSearchMovie(page,this.props.userInput)
-
         // rerender when ulr change
-        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType){ 
+        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType || this.props.location.search !== prevProps.location.search){ 
             this.props.onResetPaginationHandler() 
-            this.props.onInitialMovies(page,movieType) 
-            //this.props.onGetMovieByGenreHandler(page,this.props.linkId)  
+            if(this.props.match.url !== '/search' || this.props.match.url !== '/genre'){
+                this.props.onInitialMovies(page,movieType) 
+            }
+            else if(this.props.match.url === '/search'){
+                this.props.onSearchMovie(page,userInput) 
+            }
+            
         }
     }
 
@@ -53,6 +61,11 @@ class Movies extends Component{
             title =this.props.match.params.moviesType.match(/_(.*)/)[1].toUpperCase();
         } else {
             title = this.props.match.params.moviesType.toUpperCase()
+            if(this.props.location.search !== ''){
+                title = this.props.location.search.match(/\?(.*)/)[1].toUpperCase()    
+            }
+
+            
         }
 
         return (

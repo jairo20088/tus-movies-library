@@ -28,7 +28,7 @@ const reducer = (state = initialState,action)=>{
         case actionTypes.GET_GENRE_LIST:
             return {...state,genre:action.genreList}
         case actionTypes.GET_LINK:
-            return {...state,IdElement:action.linkId}
+            return {...state,IdElement:action.linkId,userInput:''}
         default:
             return state
     }

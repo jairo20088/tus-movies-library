@@ -25,7 +25,7 @@ class Navbar extends Component{
                     value = {this.props.userInput}
                     clicked = {()=> {
                         this.props.onSearchMovie(this.props.currentPage,this.props.userInput)
-                        this.props.history.push(`/${this.props.userInput}`)
+                        this.props.history.push(`/search?${this.props.userInput}`)
                         
                     }}/>
                 <BurgerMenu clicked = {this.props.showMenu}/>

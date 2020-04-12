@@ -29,7 +29,7 @@ export const searchMovie = (page,input)=>{
         if(input !==''){
             axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${input}&page=${page}&include_adult=false`)
             .then(res =>{
-               console.log(res.data)
+               //console.log("Displaying Search movie")
                 dispatch(initialMovies(res.data.results))
         })
         } 
@@ -47,7 +47,7 @@ export const getListGenre = () =>{
         axios.get(`/genre/movie/list?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
         .then(res =>{
             dispatch(genreList(res.data.genres))
-            console.log(res.data.genres)
+            //console.log(res.data.genres)
         })
     }
 }
@@ -64,7 +64,7 @@ export const getMoviesLink = (page,id)=>{
         dispatch(getLink(id))
         axios.get(`/discover/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`)
         .then(res =>{
-            console.log(res.data)
+            //console.log(res.data)
             dispatch(initialMovies(res.data.results))
         })
     }

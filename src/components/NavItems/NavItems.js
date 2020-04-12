@@ -9,9 +9,11 @@ const navItems  = props =>{
     const genreList = props.genre.map((el,index) =>{
         return (
             <NavItem 
-                urlClicked = {()=>props.onGetMovieById(1,el.id)}
+                urlClicked = {()=>{
+                    props.onGetMovieById(props.page,el.id)
+                }}
                 key={index} 
-                link = {`/${el.name}`}>{el.name}</NavItem>
+                link = {`/genre?${el.name}`}>{el.name}</NavItem>
         )
 
     })
