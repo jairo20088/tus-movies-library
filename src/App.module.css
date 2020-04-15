@@ -14,7 +14,6 @@
 .OpenMovieDetail{
     width: 100%;
     position: fixed;
-    right: 0rem;
     overflow-x: hidden;
     transition: all .5s; 
 }

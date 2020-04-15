@@ -34,9 +34,15 @@ const movieDescription = props =>{
     @media only screen and (max-width:50em){
         width:50rem;
         grid-template-columns: 1fr;
+        grid-row-gap: 3rem;
         position: absolute;
-        top:50%; 
+        top:74rem; 
     }  
+    @media only screen and (max-width:25em){
+        width:100%;
+    }  
+    
+     
 `
 
     return(

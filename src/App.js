@@ -37,7 +37,7 @@ class App extends Component{
             <Route  exact path = "/:moviesType" component = {Movies}/> 
             <Redirect to ="/popular" from ='/'/>
           </Switch>
-         
+          
         </div>
         <Description/>
       </BrowserRouter>

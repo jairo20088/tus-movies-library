@@ -4,7 +4,9 @@
   text-indent: -9999em;
   width: 15em;
   height: 15em;
-
+  position: fixed;
+  top:35%;
+  left: 45%;
   border-radius: 50%;
   background: #517f74;
   background: -moz-linear-gradient(left, #517f74 10%, rgba(81,127,116, 0) 42%);
@@ -12,16 +14,21 @@
   background: -o-linear-gradient(left, #517f74 10%, rgba(81,127,116, 0) 42%);
   background: -ms-linear-gradient(left, #517f74 10%, rgba(81,127,116, 0) 42%);
   background: linear-gradient(to right, #517f74 10%, rgba(81,127,116, 0) 42%);
-  position: fixed;
-  top:35%;
-  left: 45%;
-  transform: translate(-50%,-50%);
+
+  
   -webkit-animation: load3 1.4s infinite linear;
   animation: load3 1.4s infinite linear;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
 }
+
+@media only screen and (max-width:37.5em){
+  .loader{
+    top:35%;
+    left: 37%;
+  }
+}  
 .loader:before {
   width: 50%;
   height: 50%;
