@@ -29,6 +29,14 @@ const movieDescription = props =>{
         0%{ transform: translate(-50%,-50%) scale(0)}
         100%{transform: translate(-50%,-50%) scale(1)}
     }  
+
+
+    @media only screen and (max-width:50em){
+        width:50rem;
+        grid-template-columns: 1fr;
+        position: absolute;
+        top:50%; 
+    }  
 `
 
     return(

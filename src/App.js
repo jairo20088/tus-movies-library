@@ -16,7 +16,10 @@ class App extends Component{
 
     if(this.props.openMenu){
       openSideMenu = style.OpenMenu
-    } else {
+    } else if(this.props.showBackDrop){
+      openSideMenu = style.OpenMovieDetail
+    }
+    else {
       openSideMenu = style.App
     }
 
@@ -28,14 +31,15 @@ class App extends Component{
           <Navbar showMenu = {this.props.displaySideDrawer}
                   backdrop = {this.props.openMenu}
                   close = {this.props.displaySideDrawer}/>
-          <Description/>
           
+  
           <Switch>
             <Route  exact path = "/:moviesType" component = {Movies}/> 
             <Redirect to ="/popular" from ='/'/>
           </Switch>
          
         </div>
+        <Description/>
       </BrowserRouter>
       
     );
@@ -47,7 +51,7 @@ class App extends Component{
 const mapStateToProps = state =>{
   return {
     showBackDrop: state.movie.detail,
-    openMenu: state.nav.showNav
+    openMenu: state.nav.showNav,
   }
 }
 const mapDispatchToProps = dispatch =>{

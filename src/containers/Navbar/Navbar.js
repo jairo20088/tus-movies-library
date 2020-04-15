@@ -6,7 +6,8 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 import SideMenu from '../../components/SideMenu/SideMenu';
 import Backdrop from '../../components/Backdrop/Backdrop';
-import {withRouter} from 'react-router'
+import {withRouter} from 'react-router';
+import Logo from '../../assets/popcorn.png';
 
 class Navbar extends Component{
 
@@ -18,7 +19,10 @@ class Navbar extends Component{
     render(){
         return (
             <nav className = {style.Navbar}>
-                <div className = "Logo">TusMoviesLibrary</div>   
+                <div className = {style.Logo} alt = "popcorn">
+                    <img className = {style.Popcorn} src = {Logo}></img>
+                    <span>TusMoviesLibrary</span>
+                </div>   
 
                 <SearchBar 
                     changed = {(e)=>this.props.onGetUserInputHandler(e.target.value)}

@@ -14,3 +14,8 @@ h1{
     margin-bottom: 7rem;
     font-family: 'Comic Neue', cursive;
 }
+@media only screen and (max-width:43.75em){
+    h1{
+      font-size: 6.7rem;
+    }
+  }  

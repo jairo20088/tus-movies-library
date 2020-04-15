@@ -37,6 +37,8 @@ class Movies extends Component{
             }
             else if(this.props.match.url === '/search'){
                 this.props.onSearchMovie(page,userInput) 
+            }else if(this.props.match.url === '/genre'){
+                this.props.onGetMovieByGenreHandler(page,linkId)
             }
             
         }

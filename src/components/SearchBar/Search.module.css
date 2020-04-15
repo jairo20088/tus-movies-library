@@ -1,3 +1,6 @@
+.Search{
+    position: relative;
+}
 input{
     width: 40rem;
     padding: 2rem;
@@ -12,12 +15,18 @@ input{
     display: inline-block;
     cursor: pointer;
     color: #ffffff;
-    position: relative;
-    top: .1rem;
+    position: absolute;
     font-size: 2.5rem;
-    left: 40.5rem;
+    right: -.5rem;
     background-color: #2d2d2d;
     border-radius: 50%;
     padding: 1.12rem 1.12rem 1rem 1.12rem;
 
 }
+@media only screen and (max-width:35.5em){
+    input{
+      width: 30rem;
+    }
+  }  
+
+ 

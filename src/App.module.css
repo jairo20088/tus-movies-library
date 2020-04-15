@@ -1,13 +1,23 @@
 .App{
+    width: 100%;
     position:relative;
     right: 0rem;
     overflow-x: hidden;
-    transition: all .5s;
+    transition: all .5s; 
 }
 .OpenMenu{
+    width: 100%;
     position:relative;
     right: 42rem;
     transition: all .5s;
 }
+.OpenMovieDetail{
+    width: 100%;
+    position: fixed;
+    right: 0rem;
+    overflow-x: hidden;
+    transition: all .5s; 
+}
+
 
 

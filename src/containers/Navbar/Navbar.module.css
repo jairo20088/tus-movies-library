@@ -16,11 +16,17 @@
     justify-items: center; 
     
 }
-/* @media only screen and (max-width:64em){
-    .topItems{
+
+.Popcorn{
+    display: inline-block;
+    max-width: 4rem;
+}
+
+ @media only screen and (max-width:56.25em){
+    .Logo span{
         display: none;
     }
-} */
+}  
 
 
 
