@@ -6,7 +6,7 @@ const button = props =>{
     return(
         <div className = {style.Button}>
             <button disabled = {props.show} className = {style.Prev} onClick = {props.prev}>Prev</button>
-            <button  className = {style.Next} onClick = {props.next}>Next</button>
+            <button  disabled = {props.hide} className = {style.Next} onClick = {props.next}>Next</button>
         </div>
     )
 

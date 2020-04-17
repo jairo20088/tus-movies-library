@@ -1,11 +1,12 @@
 img{
     width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 .Movie{
     cursor: pointer;
     transition: all .2s;
-  
+
 }
 .Movie:hover{
     transform: scale(1.13);
@@ -16,6 +17,6 @@ h3{
     text-align: center;
     margin-top: 1rem;
     font-size: 2.5rem;
-    
-    
+
+
 }

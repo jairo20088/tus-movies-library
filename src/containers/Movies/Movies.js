@@ -8,8 +8,6 @@ import Spinner from '../../components/Spinner/Spinner';
 
 
 class Movies extends Component{
-
-
     componentDidMount(){
         const page = this.props.page
         const movieType = this.props.match.params.moviesType
@@ -24,66 +22,66 @@ class Movies extends Component{
         //render when page change
         if(page !== prevProps.page){
             if(this.props.match.url === '/search'){
-                this.props.onSearchMovie(page,userInput) 
+                this.props.onClearMovie();
+                this.props.onSearchMovie(page,userInput)
             } else if (this.props.match.url === '/genre'){
+                this.props.onClearMovie();
                 this.props.onGetMovieByGenreHandler(page,linkId)
-            }   
+            }
             this.props.onInitialMovies(page,movieType)
         // rerender when ulr change
-        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType || this.props.location.search !== prevProps.location.search){ 
-            this.props.onResetPaginationHandler() 
+        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType || this.props.location.search !== prevProps.location.search){
+            this.props.onResetPaginationHandler()
+            this.props.onClearMovie();
             if(this.props.match.url !== '/search' || this.props.match.url !== '/genre'){
-                this.props.onInitialMovies(page,movieType) 
+                this.props.onInitialMovies(page,movieType)
             }
             else if(this.props.match.url === '/search'){
-                this.props.onSearchMovie(page,userInput) 
+                this.props.onSearchMovie(page,userInput)
             }else if(this.props.match.url === '/genre'){
                 this.props.onGetMovieByGenreHandler(page,linkId)
             }
-            
+
         }
     }
-
     render(){
-        let movies;   
-        let title; 
+        let movies;
+        let title;
         if(this.props.movies){
-            movies = this.props.movies.map(el =>{
-            return <Movie 
-                        image = {el.poster_path} 
-                         key = {el.id}
+            movies = this.props.movies.results.map(el =>{
+
+            return <Movie
+                        image = {el.poster_path}
+                        key = {el.id}
                         alt = {el.overview}
                         clicked = {()=>this.props.onMovieDetailHandler(el.id)}/>
             })
         }else{
             movies = <Spinner/>
-        }   
-
+        }
         if(this.props.match.params.moviesType.includes('_')){
             title =this.props.match.params.moviesType.match(/_(.*)/)[1].toUpperCase();
         } else {
             title = this.props.match.params.moviesType.toUpperCase()
             if(this.props.location.search !== ''){
-                title = this.props.location.search.match(/\?(.*)/)[1].toUpperCase()    
+                title = this.props.location.search.match(/\?(.*)/)[1].toUpperCase()
             }
-
-            
         }
-
         return (
             <div className = {style.Container}>
                 <h1>{title} MOVIES</h1>
                 <div className = {style.Movies}>
-                      {movies}   
+                      {movies}
                 </div>
-                {this.props.movies ?<Button 
-                    show = {this.props.page > 1 ? false:true } 
+                {this.props.movies ?<Button
+                    show = {this.props.page > 1 ? false:true }
+                    hide = {this.props.page === this.props.movies.total_pages?true:false}
                     next = {this.props.onNextPageHandler}
                     prev = {this.props.onPrevPageHanlder}/>:null}
             </div>
         )
     }
-} 
+}
 const mapStateToProps = state =>{
     return{
         movies: state.movie.movies,
@@ -101,7 +99,8 @@ const mapDispatchToProps = dispatch =>{
         onMovieDetailHandler: (id)=> dispatch(action.getMovieDetails(id)),
         onResetPaginationHandler: ()=>dispatch(action.resetPagination()),
         onSearchMovie:(page,input) => dispatch(action.searchMovie(page,input)),
-        onGetMovieByGenreHandler: (page,id)=> dispatch(action.getMoviesLink(page,id))
+        onGetMovieByGenreHandler: (page,id)=> dispatch(action.getMoviesLink(page,id)),
+        onClearMovie: ()=>dispatch(action.clearMovie())
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(Movies)

@@ -25,14 +25,14 @@ export const initialMovies = (movies)=>{
 }
 
 export const searchMovie = (page,input)=>{
-    return dispatch =>{ 
+    return dispatch =>{
         if(input !==''){
             axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${input}&page=${page}&include_adult=false`)
             .then(res =>{
-               //console.log("Displaying Search movie")
-                dispatch(initialMovies(res.data.results))
+               console.log(res.data)
+                dispatch(initialMovies(res.data))
         })
-        } 
+        }
     }
 }
 
@@ -65,7 +65,7 @@ export const getMoviesLink = (page,id)=>{
         axios.get(`/discover/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`)
         .then(res =>{
             //console.log(res.data)
-            dispatch(initialMovies(res.data.results))
+            dispatch(initialMovies(res.data))
         })
     }
-} 
+}

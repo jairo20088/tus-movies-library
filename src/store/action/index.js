@@ -15,4 +15,5 @@ export {
         goPrevPage,
         goToNextPage,
         hideBackDrop,
-        resetPagination} from './ui-action'
+        resetPagination,
+        clearMovie} from './ui-action'

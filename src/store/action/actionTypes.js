@@ -12,6 +12,8 @@ export const GET_USER_INPUT = 'GET_USER_INPUT';
 export const MOVIE_SEARCH = 'MOVIE_SEARCH';
 
 export const GET_GENRE_LIST = 'GET_GENRE_LIST';
-export const GET_LINK = 'GET_LINK'
+export const GET_LINK = 'GET_LINK';
+
+export const CLEAR_MOVIE = 'CLEAR_MOVIE';
 
 

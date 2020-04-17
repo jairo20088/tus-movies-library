@@ -12,9 +12,10 @@ export const getPopularMovies = (page,movieType,userInput,id) =>{
         if(movieType === 'top_rated' || movieType === 'upcoming'|| movieType === 'popular'){
             axios.get(`/movie/${movieType}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&page=${page}`)
             .then(res =>{
-            dispatch(initialMovies(res.data.results))
+                console.log(res.data)
+                dispatch(initialMovies(res.data))
             })
-        }    
+        }
     }
 }
 export const movieDetails = (detail)=>{
@@ -24,7 +25,7 @@ export const movieDetails = (detail)=>{
     }
 }
 export const getMovieDetails = (id)=>{
-    return dispatch =>{  
+    return dispatch =>{
         axios.get(`/movie/${id}?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US`)
         .then(data =>{
             dispatch(movieDetails(data.data))
@@ -32,6 +33,5 @@ export const getMovieDetails = (id)=>{
     }
 }
 
-/* https://api.themoviedb.org/3/discover/movie?api_key=0ad9525d7beedbb790ddebfc31839baa&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=28 */
 
 

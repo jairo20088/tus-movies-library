@@ -1,14 +1,18 @@
 import React from 'react';
 import style from './MovieDescription.module.css';
 import styled from 'styled-components'
+import imageNotFound from '../../assets/imageNotFound.png';
 
-const movieDescription = props =>{
+class movieDescription extends React.Component {
 
-    const NewStyle = styled.div`
+    state = {fail:true}
+
+    render(){
+        const NewStyle = styled.div`
         text-align: center;
         padding: 5rem;
         width: 104rem;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)),url(https://image.tmdb.org/t/p/w500${props.bg});
+        background-image: linear-gradient(rgba(0, 0, 0, 0.85),rgba(0, 0, 0, 0.85)),url(https://image.tmdb.org/t/p/w500${this.props.bg});
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -28,7 +32,7 @@ const movieDescription = props =>{
     @keyframes popup{
         0%{ transform: translate(-50%,-50%) scale(0)}
         100%{transform: translate(-50%,-50%) scale(1)}
-    }  
+    }
 
 
     @media only screen and (max-width:50em){
@@ -36,29 +40,31 @@ const movieDescription = props =>{
         grid-template-columns: 1fr;
         grid-row-gap: 3rem;
         position: absolute;
-        top:74rem; 
-    }  
+        top:74rem;
+    }
     @media only screen and (max-width:25em){
         width:100%;
-    }  
-    
-     
+    }
 `
+        const defaultImage = imageNotFound;
+        const image = `https://image.tmdb.org/t/p/w300/${this.props.img}`
 
-    return(
+        return(
         <NewStyle>
             <div>
-                <img src = {`https://image.tmdb.org/t/p/w300/${props.img}`}className = {style.MovieImage} alt = ""/>
+                <img src = {this.state.fail?image:defaultImage}className = {style.MovieImage} onError = {(e)=>{
+                    this.setState({fail:false})
+                }} alt = ""/>
             </div>
             <div>
-                <h2>{props.title}</h2>
-                <p>{props.description}</p>
-                <p>Genres: {props.genres}</p>
-                <p>Vote Average: {props.vote}</p>
+                <h2>{this.props.title}</h2>
+                <p>{this.props.description}</p>
+                <p>Genres: {this.props.genres}</p>
+                <p>Vote Average: {this.props.vote}</p>
                 <a href = "https://www.youtube.com/watch?v=naQr0uTrH_s" target = "_blank"className = {style.Trailer}>Trailer</a>
             </div>
-        </NewStyle>
-    )
+        </NewStyle>)
+    }
 }
 export default movieDescription
 

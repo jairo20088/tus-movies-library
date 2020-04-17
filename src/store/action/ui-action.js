@@ -20,3 +20,8 @@ export const resetPagination = ()=>{
         type:action.RESET_PAGINATION
     }
 }
+export const clearMovie = ()=>{
+    return {
+        type:action.CLEAR_MOVIE
+    }
+}
