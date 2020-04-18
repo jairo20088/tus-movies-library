@@ -7,9 +7,9 @@ import Backdrop from './components/Backdrop/Backdrop';
 import * as action from './store/action/index';
 import style from './App.module.css';
 import Description from './containers/Description/Description';
-
+import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 class App extends Component{
-  
+
   render(){
 
     let openSideMenu;
@@ -26,39 +26,40 @@ class App extends Component{
     return (
       <BrowserRouter>
         <div className = {openSideMenu}>
-          <Backdrop show = {this.props.showBackDrop} 
+          <Backdrop show = {this.props.showBackDrop}
                     clicked = {this.props.hideBackdropHandler}/>
           <Navbar showMenu = {this.props.displaySideDrawer}
                   backdrop = {this.props.openMenu}
                   close = {this.props.displaySideDrawer}/>
-          
-  
           <Switch>
-            <Route  exact path = "/:moviesType" component = {Movies}/> 
+            <Route  exact path = "/:moviesType" component = {Movies}/>
             <Redirect to ="/popular" from ='/'/>
           </Switch>
-          
+
         </div>
         <Description/>
+        {this.props.error?<ErrorMessage error = {this.props.error}/>:null}
+
       </BrowserRouter>
-      
+
     );
 
   }
-    
+
 }
- 
+
 const mapStateToProps = state =>{
   return {
     showBackDrop: state.movie.detail,
     openMenu: state.nav.showNav,
+    error:state.movie.error
   }
 }
 const mapDispatchToProps = dispatch =>{
   return {
     hideBackdropHandler:() => dispatch(action.hideBackdrop()),
     displaySideDrawer: ()=> dispatch(action.displaySideDraw()),
-    
+
   }
 }
 

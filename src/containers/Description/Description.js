@@ -13,6 +13,7 @@ class Description extends Component{
                     title = {this.props.movieDetail.title}
                     description = {this.props.movieDetail.overview}
                     genres = {this.props.movieDetail.genres.map(el => el.name).join(', ')}
+                    trailer = {this.props.trailer}
                     vote = {this.props.movieDetail.vote_average}/>:null}
             </div>
         )
@@ -23,6 +24,7 @@ const mapStateToProps = state =>{
     return{
         detail: state.movie.detail,
         movieDetail:state.movie.movieDetails,
+        trailer:state.movie.movideTrailer
     }
 }
 export default connect(mapStateToProps)(Description)

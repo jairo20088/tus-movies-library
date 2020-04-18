@@ -1,17 +1,15 @@
 .Navbar{
     /* display: flex; */
-    position: sticky;
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    justify-content: space-around;
-    align-items: center;
     font-size: 3rem;
     padding: 2rem 3rem;
     background-color: #517f74;
     color: #fff;
-    z-index:0;
-     display: grid;
+    z-index:100;
+    display: grid;
     grid-template-columns: repeat(3,1fr);
     justify-items: center;
 

@@ -23,15 +23,27 @@ export const initialMovies = (movies)=>{
         popularMovies:movies
     }
 }
+export const errorHandler = (error)=>{
+    return {
+        type:actionType.ERROR_HAS_OCCURED,
+        error:error
+    }
+}
 
 export const searchMovie = (page,input)=>{
     return dispatch =>{
         if(input !==''){
             axios.get(`/search/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&query=${input}&page=${page}&include_adult=false`)
             .then(res =>{
-               console.log(res.data)
                 dispatch(initialMovies(res.data))
-        })
+                if(!res.data.results.length <= 0){
+                    dispatch(initialMovies(res.data))
+                }else{
+                    dispatch(errorHandler('Sorry, could not find movie'))
+                }
+            }).catch(e =>{
+                dispatch(errorHandler(e.message))
+            })
         }
     }
 }
@@ -48,6 +60,8 @@ export const getListGenre = () =>{
         .then(res =>{
             dispatch(genreList(res.data.genres))
             //console.log(res.data.genres)
+        }).catch(e =>{
+            dispatch(errorHandler(e.message))
         })
     }
 }
@@ -59,13 +73,14 @@ export const getListGenre = () =>{
 }
 
 export const getMoviesLink = (page,id)=>{
-
     return dispatch =>{
         dispatch(getLink(id))
         axios.get(`/discover/movie?api_key=${process.env.REACT_APP_MY_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${id}`)
         .then(res =>{
             //console.log(res.data)
             dispatch(initialMovies(res.data))
+        }).catch(e =>{
+            dispatch(errorHandler(e.message))
         })
     }
 }

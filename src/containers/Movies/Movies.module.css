@@ -1,6 +1,6 @@
 .Container {
     max-width: 154rem;
-    margin:  7rem auto;
+    margin:  15rem auto;
 }
 .Movies{
     display: grid;
@@ -18,4 +18,4 @@ h1{
     h1{
       font-size: 6.7rem;
     }
-  }  
+  }

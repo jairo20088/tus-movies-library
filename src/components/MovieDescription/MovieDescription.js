@@ -61,7 +61,7 @@ class movieDescription extends React.Component {
                 <p>{this.props.description}</p>
                 <p>Genres: {this.props.genres}</p>
                 <p>Vote Average: {this.props.vote}</p>
-                <a href = "https://www.youtube.com/watch?v=naQr0uTrH_s" target = "_blank"className = {style.Trailer}>Trailer</a>
+                <a href = {`https://www.youtube.com/watch?v=${this.props.trailer}`} target = "_blank" rel="noopener noreferrer" className = {style.Trailer}>Trailer</a>
             </div>
         </NewStyle>)
     }

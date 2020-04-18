@@ -15,5 +15,7 @@ export const GET_GENRE_LIST = 'GET_GENRE_LIST';
 export const GET_LINK = 'GET_LINK';
 
 export const CLEAR_MOVIE = 'CLEAR_MOVIE';
+export const GET_MOVIE_TRAILER = 'GET_MOVIDE_TRAILER';
+export const ERROR_HAS_OCCURED = 'ERROR_HAS_OCCURED'
 
 

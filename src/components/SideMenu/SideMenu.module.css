@@ -2,11 +2,15 @@
     background-color: #fff;
     width: 42rem;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: -42rem;
-    transition: all .3s;
-    z-index: 300;
+    right: -100%;
+    transition: all .5s ease-in-out;
+    z-index: 1000;
+}
+.SideMenuOpen{
+    top: 0;
+    right: 0%;
 }
 
 .SideMenu a {
@@ -17,12 +21,11 @@
     padding: 1.5rem;
     font-size: 3rem;
     transition: all .1s;
-    
 }
 .SideMenu a:hover{
     background-color: #517f74;
     color: #fff;
-    
+
 }
 .X{
     color: #000;
@@ -31,7 +34,7 @@
     padding: 1rem 2rem;
 }
 .X i {
-    
+
     display: inline-block;
     cursor: pointer;
 }

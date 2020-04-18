@@ -1,0 +1,26 @@
+.ErrorMessage{
+    position: absolute;
+    z-index: 3000;
+    background-color: #517f74;
+    text-align: center;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 5rem;
+    animation: error 2s forwards cubic-bezier(1,.14,.33,.85)
+}
+.ErrorMessage_2{
+    top:-100%;
+    left:50%;
+}
+
+@keyframes error{
+    0%{top:-100%;left:50%}
+    50%{top:65%;left: 50%;}
+    100%{top: 50%; left: 50%;}
+}
+.ErrorMessage h2{
+    font-size: 5rem;
+    color: #fff;
+    padding: 1rem;
+}

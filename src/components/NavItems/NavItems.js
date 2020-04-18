@@ -6,17 +6,22 @@ import * as action from '../../store/action/index'
 import  './NavItems.module.css';
 
 const navItems  = props =>{
-    const genreList = props.genre.map((el,index) =>{
-        return (
-            <NavItem 
-                urlClicked = {()=>{
-                    props.onGetMovieById(props.page,el.id)
-                }}
-                key={index} 
-                link = {`/genre?${el.name}`}>{el.name}</NavItem>
-        )
+    let genreList;
+    if(props.genre){
+         genreList = props.genre.map((el,index) =>{
+            return (
+                <NavItem
+                    urlClicked = {()=>{
+                        props.onGetMovieById(props.page,el.id)
+                    }}
+                    key={index}
+                    link = {`/genre?${el.name}`}>{el.name}</NavItem>
+            )
+        })
+    }else{
+        genreList = null
+    }
 
-    })
     return (
         <React.Fragment>
             <NavItem link = '/popular' >Most popular</NavItem>
@@ -25,8 +30,6 @@ const navItems  = props =>{
              <div className = {style.LinkContainer}>
                 {genreList}
              </div>
-             
-            {/* <NavItem link = '/' >More</NavItem>  */}
         </React.Fragment>
     )
 }
