@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './Movie.module.css';
 import imageNotFound from '../../assets/imageNotFound.png'
+
 class movie extends React.Component {
     state = {fail:true}
 

@@ -25,3 +25,14 @@ export const clearMovie = ()=>{
         type:action.CLEAR_MOVIE
     }
 }
+
+export const displaySideDraw = ()=>{
+    return {
+        type:action.TOGGLE_SIDE_NAV
+    }
+}
+export const hideBackdrop = ()=>{
+    return{
+        type:action.HIDE_BACKDROP
+    }
+}

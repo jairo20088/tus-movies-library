@@ -28,18 +28,14 @@ class App extends Component{
         <div className = {openSideMenu}>
           <Backdrop show = {this.props.showBackDrop}
                     clicked = {this.props.hideBackdropHandler}/>
-          <Navbar showMenu = {this.props.displaySideDrawer}
-                  backdrop = {this.props.openMenu}
-                  close = {this.props.displaySideDrawer}/>
+          <Navbar/>
           <Switch>
             <Route  exact path = "/:moviesType" component = {Movies}/>
             <Redirect to ="/popular" from ='/'/>
           </Switch>
-
         </div>
         <Description/>
         {this.props.error?<ErrorMessage error = {this.props.error}/>:null}
-
       </BrowserRouter>
 
     );

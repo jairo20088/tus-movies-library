@@ -31,23 +31,24 @@ class Navbar extends Component{
                         this.props.history.push(`/search?${this.props.userInput}`)
 
                     }}/>
-                <BurgerMenu clicked = {this.props.showMenu}/>
+                <BurgerMenu clicked = {()=>this.props.displaySideDrawer()}/>
                 <SideMenu
-                        clicked = {this.props.close}
+                        clicked = {()=>this.props.displaySideDrawer()}
                         show = {this.props.showNav}
                         genre = {this.props.genre?this.props.genre:null}
                        />
-                <Backdrop show = {this.props.backdrop}/>
+                <Backdrop show = {this.props.toogleBackDrop}/>
             </nav>
         )
     }
 }
 const mapStateToProps = state =>{
     return {
-        userInput :state.movie.userInput,
-        currentPage: state.movie.page,
-        genre:state.movie.genre,
-        showNav : state.nav.showNav
+        userInput :state.nav.userInput,
+        currentPage: state.ui.page,
+        genre:state.nav.genre,
+        showNav : state.nav.showNav,
+        toogleBackDrop: state.nav.showNav,
     }
 }
 const mapDispatchToProps = dispatch =>{

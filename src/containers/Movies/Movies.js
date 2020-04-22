@@ -19,26 +19,29 @@ class Movies extends Component{
         const movieType = this.props.match.params.moviesType
         const linkId = this.props.linkId
         const userInput = this.props.userInput;
+        const location = this.props.location.search
+        const url = this.props.match.url
+
         //render when page change
         if(page !== prevProps.page){
             if(this.props.match.url === '/search'){
                 this.props.onClearMovie();
                 this.props.onSearchMovie(page,userInput)
-            } else if (this.props.match.url === '/genre'){
+            } else if (url === '/genre'){
                 this.props.onClearMovie();
                 this.props.onGetMovieByGenreHandler(page,linkId)
             }
             this.props.onInitialMovies(page,movieType)
         // rerender when ulr change
-        } else if(this.props.match.params.moviesType !== prevProps.match.params.moviesType || this.props.location.search !== prevProps.location.search){
+        } else if(movieType !== prevProps.match.params.moviesType || location !== prevProps.location.search){
             this.props.onResetPaginationHandler()
             this.props.onClearMovie();
-            if(this.props.match.url !== '/search' || this.props.match.url !== '/genre'){
+            if(url !== '/search' || url !== '/genre'){
                 this.props.onInitialMovies(page,movieType)
             }
-            else if(this.props.match.url === '/search'){
+            else if(url === '/search'){
                 this.props.onSearchMovie(page,userInput)
-            }else if(this.props.match.url === '/genre'){
+            }else if(url === '/genre'){
                 this.props.onGetMovieByGenreHandler(page,linkId)
             }
 
@@ -85,10 +88,10 @@ class Movies extends Component{
 const mapStateToProps = state =>{
     return{
         movies: state.movie.movies,
-        page: state.movie.page,
-        userInput :state.movie.userInput,
-        genre:state.movie.genre,
-        linkId:state.movie.IdElement
+        page: state.ui.page,
+        userInput :state.nav.userInput,
+        genre:state.nav.genre,
+        linkId:state.nav.IdElement
     }
 }
 const mapDispatchToProps = dispatch =>{

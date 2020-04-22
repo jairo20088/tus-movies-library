@@ -1,6 +1,4 @@
-export {displaySideDraw,
-        hideBackdrop,
-        searchMovie,
+export {searchMovie,
         getUserInput,
         getListGenre,
         getMoviesLink } from './navegation';
@@ -9,11 +7,12 @@ export {
     getPopularMovies,
     movieDetails,
     getMovieDetails,
-    /* getMoviesLink */} from './movies';
+        } from './movies';
 
 export {
         goPrevPage,
         goToNextPage,
-        hideBackDrop,
+        hideBackdrop,
         resetPagination,
-        clearMovie} from './ui-action'
+        clearMovie,
+        displaySideDraw} from './ui-action'
